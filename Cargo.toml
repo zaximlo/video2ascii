@@ -18,6 +18,5 @@ include = [
 
 [dependencies]
 opencv = { version = "0.63.0", features = ["rgb"] }
-ansi_rgb = "0.2.0"
 rgb = "0.8"
-clap = { version = "3.1.6", features = ["derive"] }
+macroquad = "0.3.24"
