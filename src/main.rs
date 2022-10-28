@@ -29,6 +29,8 @@ async fn main(){
 
     let black = Color::new(0.0, 0.0, 0.0, 1.);
 
+    let mut frames: i32 = 1;
+
     loop {
         clear_background(black);
 
@@ -38,7 +40,7 @@ async fn main(){
             for x in 0..W {
                 let pixel = img_pxls[index];
 
-                let to_col = Color::new(pixel[0], pixel[1], 0.4, 1.);
+                let to_col = Color::new(pixel[0], pixel[1], pixel[2], 1.);
 
                 draw_rectangle(x as f32, y as f32, 1.0, 1.0, to_col);
 
@@ -53,8 +55,9 @@ async fn main(){
             }
         }
 
-        let mut img_pxls: Vec<[f32; 3]> = Vec::new();
-        videoinput::vectorize("main.mp4", 290, &mut img_pxls, &mut W);
+        img_pxls = Vec::new();
+        frames += 7;
+        videoinput::vectorize("main.mp4", frames, &mut img_pxls, &mut W);
 
 
         next_frame().await
